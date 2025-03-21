@@ -1,7 +1,8 @@
 # Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repo hosts sample code for Edge Actions. It also hosts devcontainer samples.
+
+Edge Actions is Microsoft's edge serverless compute offering.
 
 As the maintainer of this project, please make a few updates:
 
