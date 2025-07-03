@@ -1,0 +1,37 @@
+{
+  "request": {
+    "uri": "",
+    "method": "",
+    "query_string": "",
+    "headers": {},
+    "body": ""
+  },
+  "origin_data": [
+   {
+    "id": 0,
+    "name": "us.origin.com",
+    "weight": 1,
+    "priority": 1,
+    "is_healthy": true
+  },
+  {
+    "id": 1,
+    "name": "eu.origin.com",
+    "weight": 1,
+    "priority": 1,
+    "is_healthy": true
+  }
+],
+  "response": {
+    "response_code": 0,
+    "headers": {},
+    "body": ""
+  },
+  "hook_point": 0,
+  "context": {
+    "country_code": "US"
+  },
+  "origin": {
+    "id": -1
+  }
+}
