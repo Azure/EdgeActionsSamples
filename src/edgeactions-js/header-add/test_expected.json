@@ -1,0 +1,22 @@
+{
+  "request": {
+    "uri": "",
+    "method": "",
+    "query_string": "",
+    "headers": {},
+    "body": ""
+  },
+  "origin_data": [],
+  "response": {
+    "response_code": 0,
+    "headers": {
+      "x-customheader": "processedByEdgeactions"
+    },
+    "body": ""
+  },
+  "hook_point": 0,
+  "context": {},
+  "origin": {
+    "id": -1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "uri": "",
+    "method": "",
+    "query_string": "",
+    "headers": {},
+    "body": ""
+  },
+  "origin_data": [],
+  "response": {
+    "response_code": 403,
+    "headers": {
+      "X-Request-Rejected": "true"
+    },
+    "body": ""
+  },
+  "hook_point": 0,
+  "context": {
+    "country_code": "GB"
+  },
+  "origin": {
+    "id": -1
+  }
+}
