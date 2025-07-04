@@ -1,0 +1,39 @@
+{
+  "request": {
+    "uri": "",
+    "method": "",
+    "query_string": "",
+    "headers": {
+      "x-allow-experiment": "true"
+    },
+    "body": ""
+  },
+  "origin_data": [
+    {
+    "id": 0,
+    "name": "normal.origin.com",
+    "weight": 1000,
+    "priority": 1,
+    "is_healthy": true
+    },
+    {
+      "id": 1,
+      "name": "experimental.origin.com",
+      "weight": 1,
+      "priority": 2,
+      "is_healthy": true
+    }
+  ],
+  "response": {
+    "response_code": 0,
+    "headers": {},
+    "body": ""
+  },
+  "hook_point": 0,
+  "context": {
+    "is_mobile": "1"
+  },
+  "origin": {
+    "id": 1
+  }
+}
