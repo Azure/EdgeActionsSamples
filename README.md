@@ -1,8 +1,20 @@
 # Azure Front Door Edge actions script samples
 
-This repo hosts sample code for Edge Actions. It also hosts devcontainer samples.
+Azure Front Door Edge actions enables customers to run ephemeral and simple business logic code at the edge of Microsoft network, closer to users, apps and devices with the least possible latencies in an industry leading secure environment!
 
-Edge Actions is Microsoft's edge serverless compute offering.
+At select customer preview stage, Edge actions will support running native JS code and support following use cases
+1. A/B experimentation
+2. Origin selection
+3. HTTP header manipulation
+4. Request rejection
+
+We will be adding more use cases by public preview and General Availability stages.
+
+Edge actions can be setup and consumed using Azure portal or VS Code extensions.
+
+You can download the VS Code extension from https://marketplace.visualstudio.com/items?itemName=ms-edgeactions.afd-edgeactions Be sure to follow the setup instructions to get the most benefit out of the extension.
+
+This repo hosts sample code for Edge Actions. It also hosts devcontainer samples.
 
 ## Contributing
 
