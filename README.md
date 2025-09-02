@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure/EdgeActionsSamples)
+
 # Azure Front Door Edge actions script samples
 
 Azure Front Door Edge actions enables customers to run ephemeral and simple business logic code at the edge of Microsoft network, closer to users, apps and devices with the least possible latencies in an industry leading secure environment!

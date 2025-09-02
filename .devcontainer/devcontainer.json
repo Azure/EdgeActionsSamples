@@ -1,0 +1,25 @@
+{
+	"name": "EdgeActions",
+	"image": "mcr.microsoft.com/azurefrontdooredgeactions/edgeactiondev:0.1.322-ge3bb73fba4",
+	"containerUser": "vscode",
+	// Environment for the container also used by the `postCreateCommand`
+	"containerEnv": {
+		"DEVICE": "/dev/kvm",
+		"REMOTE_USER": "vscode",
+		"REMOTE_GROUP": "vscode"
+	},
+	"runArgs": [
+		"--device=/dev/kvm"
+	],
+	"features": {},
+	// use `postStartCommand` for additional setup commands
+	// this is run after the container is created and the user has been added
+	"postStartCommand": "sudo chown -R $REMOTE_USER:$REMOTE_GROUP $DEVICE && sudo chmod +x /usr/local/bin/edgeaction",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-edgeactions.afd-edgeactions@prerelease"
+			]
+		}
+	}
+}
