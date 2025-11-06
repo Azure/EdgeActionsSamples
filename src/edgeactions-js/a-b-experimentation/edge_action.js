@@ -34,7 +34,7 @@ function handler(event) {
 
 /**
  * Finds an experimental origin by name patterns
- * @param {Array} origins - Array of origin objects
+ * @param {Array<import("./edge_actions").CdnOrigin>} origins - Array of origin objects
  * @returns {import("./edge_actions").CdnOrigin|null} - Found experimental origin or null
  */
 function findExperimentalOrigin(origins) {
@@ -47,5 +47,5 @@ function findExperimentalOrigin(origins) {
     });
     
     console.log(`Selected experimental origin: ${found ? found.id : 'none'}\n`);
-    return found;
+    return found || null;
 }

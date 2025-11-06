@@ -1,6 +1,6 @@
 {
 	"name": "EdgeActions",
-	"image": "mcr.microsoft.com/azurefrontdooredgeactions/edgeactiondev:0.1.322-ge3bb73fba4",
+	"image": "mcr.microsoft.com/azurefrontdooredgeactions/edgeactiondev:latest",
 	"containerUser": "vscode",
 	// Environment for the container also used by the `postCreateCommand`
 	"containerEnv": {
