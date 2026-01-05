@@ -1,0 +1,280 @@
+{
+  "test_cases": [
+    {
+      "test_name": "old_blog_rewrite",
+      "description": "Rewrites /old-blog/* to /blog/*",
+      "input": {
+        "request": {
+          "uri": "/old-blog/my-awesome-post",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/blog/my-awesome-post",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    },
+    {
+      "test_name": "trailing_slash_removal",
+      "description": "Removes trailing slashes from URIs",
+      "input": {
+        "request": {
+          "uri": "/products/electronics/",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/products/electronics",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    },
+    {
+      "test_name": "product_url_rewrite",
+      "description": "Rewrites /products/item/123 to /shop/product-123",
+      "input": {
+        "request": {
+          "uri": "/products/item/456",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/shop/product-456",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    },
+    {
+      "test_name": "category_rewrite",
+      "description": "Rewrites category/subcategory URLs to shorter format",
+      "input": {
+        "request": {
+          "uri": "/category/electronics/subcategory/phones",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/c/electronics/phones",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    },
+    {
+      "test_name": "html_extension_removal",
+      "description": "Removes .html extension from URIs",
+      "input": {
+        "request": {
+          "uri": "/about.html",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/about",
+          "method": "GET",
+          "query_string": "",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    },
+    {
+      "test_name": "utm_parameter_removal",
+      "description": "Removes UTM tracking parameters from query string",
+      "input": {
+        "request": {
+          "uri": "/products",
+          "method": "GET",
+          "query_string": "id=123&utm_source=email&utm_campaign=summer&category=electronics",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      },
+      "expected": {
+        "request": {
+          "uri": "/products",
+          "method": "GET",
+          "query_string": "id=123&category=electronics",
+          "headers": {},
+          "body": ""
+        },
+        "origin_data": [],
+        "response": {
+          "response_code": 0,
+          "headers": {},
+          "body": "",
+          "set_cookie_headers": []
+        },
+        "hook_point": 0,
+        "context": {},
+        "origin": {
+          "id": -1
+        }
+      }
+    }
+  ]
+}
