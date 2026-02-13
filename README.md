@@ -9,6 +9,8 @@ At select customer preview stage, Edge actions will support running native JS co
 2. Origin selection
 3. HTTP header manipulation
 4. Request rejection
+5. URL redirect
+6. URL rewrite
 
 We will be adding more use cases by public preview and General Availability stages.
 
