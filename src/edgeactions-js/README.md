@@ -33,7 +33,7 @@ function handler(event) {
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `response_code` | `number` | The HTTP status code (valid ones are `200`, `401`, `402`). Set this to control the response returned to the client. |
+| `response_code` | `number` | The HTTP status code (valid ones are `200`, `401`, `403`). Set this to control the response returned to the client. |
 | `headers` | `{ [key: string]: string }` | Dictionary of HTTP response headers. Add or modify headers to control what is returned to the client. |
 | `set_cookie_headers` | `string[]` | Array of `Set-Cookie` header values. Use this instead of the `headers` dictionary for cookies. |
 
