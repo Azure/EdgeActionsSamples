@@ -33,7 +33,7 @@ function handler(event) {
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `response_code` | `number` | The HTTP status code (e.g., `200`, `404`). Set this to control the response returned to the client. |
+| `response_code` | `number` | The HTTP status code (valid ones are `200`, `401`, `402`). Set this to control the response returned to the client. |
 | `headers` | `{ [key: string]: string }` | Dictionary of HTTP response headers. Add or modify headers to control what is returned to the client. |
 | `set_cookie_headers` | `string[]` | Array of `Set-Cookie` header values. Use this instead of the `headers` dictionary for cookies. |
 
@@ -72,7 +72,7 @@ function handler(event) {
 
 ## Hook Points
 
-The `hook_point` field indicates when in the request lifecycle your action is invoked. Currenlty on Client Request is supported, but more will be added later.
+The `hook_point` field indicates when in the request lifecycle your action is invoked. Currently on Client Request is supported, but more will be added later.
 
 | Value | Name | Description |
 |-------|------|-------------|
@@ -83,7 +83,7 @@ The `hook_point` field indicates when in the request lifecycle your action is in
 The `context` field is a string-to-string dictionary that gives access to available AFD server variables (see https://learn.microsoft.com/en-us/azure/frontdoor/rule-set-server-variables), and UTC invocation datetime ("now"). Some server variables will not be available on all requests, in which case their key will not be present.
 
 ## Note on Header Modifications
-Header modifications applied from input to returend output event will be applied on the AFD request triggering the action. Headers may be added, have value changed, or be deleted. Some restricted headers will not allow modification on the AFD request.
+Header modifications applied from input to returned output event will be applied on the AFD request triggering the action. Headers may be added, have value changed, or be deleted. Some restricted headers will not allow modification on the AFD request.
 
 ## Note on Response Codes
 Currently AFD supports returning 401 or 403 to reject requests. 200 response code indicates that request can continue to be processed with provided modifications on the response object. Any other response code is currently considered invalid.
