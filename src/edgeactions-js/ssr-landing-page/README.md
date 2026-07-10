@@ -1,9 +1,9 @@
 # SSR at the edge
 
 An [Azure Front Door Edge Actions](https://learn.microsoft.com/azure/frontdoor/)
-sample that **server-renders the landing page at the edge**. For each visitor it
-reads **geo, device, and language** and returns a fully-rendered, localized HTML
-document straight from the Front Door POP — no origin round trip.
+sample that personalizes the landing page at the edge. For each visitor it reads
+**geo, device, and language**, computes a localized target (e.g. `/fr/mobile`),
+and stamps it back as response headers.
 
 ```mermaid
 sequenceDiagram
@@ -12,9 +12,11 @@ sequenceDiagram
     participant Origin
 
     Client->>Edge: GET / (Accept-Language: fr-FR)
-    Note over Edge: read geo, device, language<br/>render localized HTML
-    Edge-->>Client: 200 text/html<br/>rendered document +<br/>x-edge-locale, x-device-class,<br/>x-geo-country, x-rendered-at: edge
-    Note over Origin: not contacted for the landing page
+    Note over Edge: read geo, device, language<br/>compute target /fr/desktop
+    Edge->>Origin: forward request
+    Origin-->>Edge: 200 (page body)
+    Note over Edge: stamp personalization headers
+    Edge-->>Client: 200 + location: /fr/desktop<br/>x-edge-locale, x-device-class,<br/>x-geo-country, x-geo-region,<br/>x-rendered-at: edge
 ```
 
 ## How it works
@@ -23,17 +25,28 @@ On `/` or `/index.html` the [handler](./edge_action.js):
 
 1. Reads country (`context.country_code`), device (`context.is_mobile`) and
    language (`Accept-Language`).
-2. Server-renders a localized, device-aware HTML page as a string.
-3. Returns it with `response_code = 200`, `content-type: text/html`, and the
-   rendered markup in `response.body` — so the visitor gets the page directly
-   from the edge.
+2. Builds the localized, device-specific path and sets it as `location`.
+3. Adds `x-edge-locale`, `x-device-class`, `x-geo-country`, `x-geo-region`,
+   `x-rendered-at` for observability.
 
-It also stamps `x-edge-locale`, `x-device-class`, `x-geo-country`,
-`x-geo-region`, `x-rendered-at: edge` for observability. Other paths pass
-through to the origin untouched.
+Other paths pass through untouched.
 
-Supported primitives used: response synthesis (`response.response_code` +
-`response.body`) and header manipulation (`response.headers[...]`).
+> **Note on behavior.** The edge data plane applies header changes but does not
+> honor `response_code`, so the response stays `200` and the computed target
+> rides along as a `location` header (a signal, not a real `302`). Writing
+> `response.body` is unsupported and discards the edge action's output — so this
+> is a personalization router, not full server-side rendering.
+
+### Why not full SSR at the edge?
+
+Rendering HTML in the edge action and returning it via `response.body` was
+tested against a live Azure Front Door endpoint. AFD **discards the entire edge
+action output** when a body is written and serves the origin response instead
+(clean passthrough, no edge headers). AFD Edge Actions support header
+manipulation, status codes, redirects and request blocking — not response-body
+synthesis, so true SSR at the edge is not currently possible. For edge-side
+HTML generation you would pair this router with an origin renderer (Azure
+Functions, Static Web Apps, or App Service).
 
 ## Deploy
 
@@ -66,30 +79,22 @@ Override defaults with environment variables (`deploy.sh`) or parameters
 HOST=$(az afd endpoint show -g rg-wachegha-edge-action-release \
   --profile-name ssrDemoAfd --endpoint-name ssrdemo --query hostName -o tsv)
 
-# Headers: expect HTTP 200, content-type text/html, x-rendered-at: edge
 curl -sD - -o /dev/null -H 'Accept-Language: fr-FR' "https://$HOST/" \
-  | grep -iE 'HTTP/|content-type|x-rendered-at|x-geo-country|x-device-class|x-edge-locale'
-
-# Body: the fully-rendered, localized HTML comes straight from the edge
-curl -s -H 'Accept-Language: fr-FR' "https://$HOST/" | head -c 400
+  | grep -iE 'location|x-rendered-at|x-geo-country|x-device-class|x-edge-locale'
 ```
 
-Expect a `200 text/html` response whose body is the localized page
-(`<html lang="fr">`, "Bienvenue", ...) with `x-rendered-at: edge`. Change
-`Accept-Language` (`es`, `de`, `en`) and the geo/device to see different
-renders.
+Expect `x-rendered-at: edge` and a `location` such as `/fr/desktop`,
+`/es/desktop`, or `/en/mobile`.
 
 ## Test locally
 
 ```bash
 node -e 'const fs=require("fs");
 const fn=new Function("console",fs.readFileSync("edge_action.js","utf8")+"\nreturn handler;")(console);
-const r=fn(JSON.parse(fs.readFileSync("test_input.json"))).response;
-console.log("status:",r.response_code,r.headers["content-type"]);
-console.log(r.body);'
+console.log(JSON.stringify(fn(JSON.parse(fs.readFileSync("test_input.json"))).response,null,2));'
 ```
 
-The golden input (FR mobile) renders the French landing page. See
+The golden input (FR mobile) returns `location: /fr/mobile`. See
 [`test_expected.json`](./test_expected.json).
 
 ## Files
