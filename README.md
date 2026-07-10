@@ -14,9 +14,7 @@ At select customer preview stage, Edge actions will support running native JS co
 
 We will be adding more use cases by public preview and General Availability stages.
 
-Edge actions can be setup and consumed using Azure portal or VS Code extensions.
-
-You can download the VS Code extension from https://marketplace.visualstudio.com/items?itemName=ms-edgeactions.afd-edgeactions Be sure to follow the setup instructions to get the most benefit out of the extension.
+Edge actions can be setup and consumed using Azure portal.
 
 This repo hosts sample code for Edge Actions. It also hosts devcontainer samples.
 
