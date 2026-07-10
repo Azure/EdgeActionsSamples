@@ -1,0 +1,25 @@
+{
+  "request": {
+    "uri": "/",
+    "method": "GET",
+    "query_string": "",
+    "headers": {
+      "accept-language": "fr-FR,fr;q=0.9,en;q=0.8"
+    },
+    "body": ""
+  },
+  "origin_data": [],
+  "response": {
+    "response_code": 0,
+    "headers": {},
+    "body": ""
+  },
+  "hook_point": 0,
+  "context": {
+    "country_code": "FR",
+    "is_mobile": "1"
+  },
+  "origin": {
+    "id": -1
+  }
+}

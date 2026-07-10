@@ -1,0 +1,33 @@
+{
+  "request": {
+    "uri": "/",
+    "method": "GET",
+    "query_string": "",
+    "headers": {
+      "accept-language": "fr-FR,fr;q=0.9,en;q=0.8"
+    },
+    "body": ""
+  },
+  "origin_data": [],
+  "response": {
+    "response_code": 200,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "cache-control": "no-store",
+      "x-edge-locale": "fr",
+      "x-device-class": "mobile",
+      "x-geo-country": "FR",
+      "x-geo-region": "Europe",
+      "x-rendered-at": "edge"
+    },
+    "body": "<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Rendu a la peripherie</title><style>body{font-family:system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#0b1120;color:#e2e8f0}.wrap{max-width:100%;margin:0 auto;padding:48px 24px}h1{font-size:2rem;margin:0 0 12px}.lede{color:#94a3b8;font-size:1.1rem;margin:0 0 32px}.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.card{background:#111827;border:1px solid #1f2937;border-radius:12px;padding:16px}.k{color:#64748b;font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}.v{font-size:1.25rem;margin-top:4px}.foot{margin-top:32px;color:#475569;font-size:.85rem}</style></head><body><div class=\"wrap\"><h1>Bienvenue</h1><p class=\"lede\">Cette page a ete rendue cote serveur a la peripherie Azure Front Door, personnalisee pour vous.</p><div class=\"grid\"><div class=\"card\"><div class=\"k\">Pays</div><div class=\"v\">FR</div></div><div class=\"card\"><div class=\"k\">Region</div><div class=\"v\">Europe</div></div><div class=\"card\"><div class=\"k\">Appareil</div><div class=\"v\">Mobile</div></div><div class=\"card\"><div class=\"k\">Langue</div><div class=\"v\">FR</div></div></div><p class=\"foot\">Aucun aller-retour vers l'origine. Rendu au plus pres de vous.</p></div></body></html>"
+  },
+  "hook_point": 0,
+  "context": {
+    "country_code": "FR",
+    "is_mobile": "1"
+  },
+  "origin": {
+    "id": -1
+  }
+}
