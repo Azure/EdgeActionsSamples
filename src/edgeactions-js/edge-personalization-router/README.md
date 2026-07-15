@@ -1,4 +1,4 @@
-# SSR at the edge
+# Edge personalization router
 
 An [Azure Front Door Edge Actions](https://learn.microsoft.com/azure/frontdoor/)
 sample that personalizes the landing page at the edge. For each visitor it reads
@@ -33,20 +33,8 @@ Other paths pass through untouched.
 
 > **Note on behavior.** The edge data plane applies header changes but does not
 > honor `response_code`, so the response stays `200` and the computed target
-> rides along as a `location` header (a signal, not a real `302`). Writing
-> `response.body` is unsupported and discards the edge action's output — so this
-> is a personalization router, not full server-side rendering.
-
-### Why not full SSR at the edge?
-
-Rendering HTML in the edge action and returning it via `response.body` was
-tested against a live Azure Front Door endpoint. AFD **discards the entire edge
-action output** when a body is written and serves the origin response instead
-(clean passthrough, no edge headers). AFD Edge Actions support header
-manipulation, status codes, redirects and request blocking — not response-body
-synthesis, so true SSR at the edge is not currently possible. For edge-side
-HTML generation you would pair this router with an origin renderer (Azure
-Functions, Static Web Apps, or App Service).
+> rides along as a `location` header (a signal, not a real `302`). This sample
+> does not generate a response body.
 
 ## Deploy
 
@@ -77,7 +65,7 @@ Override defaults with environment variables (`deploy.sh`) or parameters
 
 ```bash
 HOST=$(az afd endpoint show -g rg-wachegha-edge-action-release \
-  --profile-name ssrDemoAfd --endpoint-name ssrdemo --query hostName -o tsv)
+  --profile-name edgePersonalizationAfd --endpoint-name edgepersonalization --query hostName -o tsv)
 
 curl -sD - -o /dev/null -H 'Accept-Language: fr-FR' "https://$HOST/" \
   | grep -iE 'location|x-rendered-at|x-geo-country|x-device-class|x-edge-locale'

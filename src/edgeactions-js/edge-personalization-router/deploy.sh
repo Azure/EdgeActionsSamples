@@ -28,20 +28,20 @@ RESOURCE_GROUP="${RESOURCE_GROUP:-myResourceGroup}"
 SUBSCRIPTION_ID="${SUBSCRIPTION_ID:-}"          # optional; uses current context if empty
 
 # Edge action names must match [a-zA-Z0-9]+ (no hyphens). AFD names may use hyphens.
-EDGE_ACTION_NAME="${EDGE_ACTION_NAME:-ssrRouter}"
+EDGE_ACTION_NAME="${EDGE_ACTION_NAME:-edgePersonalizationRouter}"
 VERSION="${VERSION:-v1}"
 LOCATION="${LOCATION:-global}"
 SKU='{name:Standard,tier:Standard}'
 
 # AFD resources
-AFD_PROFILE="${AFD_PROFILE:-ssrDemoAfd}"
-AFD_ENDPOINT="${AFD_ENDPOINT:-ssrdemo}"
-ORIGIN_GROUP="${ORIGIN_GROUP:-ssrOriginGroup}"
-ORIGIN_NAME="${ORIGIN_NAME:-ssrOrigin}"
+AFD_PROFILE="${AFD_PROFILE:-edgePersonalizationAfd}"
+AFD_ENDPOINT="${AFD_ENDPOINT:-edgepersonalization}"
+ORIGIN_GROUP="${ORIGIN_GROUP:-edgePersonalizationOriginGroup}"
+ORIGIN_NAME="${ORIGIN_NAME:-edgePersonalizationOrigin}"
 ORIGIN_HOST="${ORIGIN_HOST:-example.com}"       # placeholder backend
-RULE_SET="${RULE_SET:-ssrRuleSet}"
-ROUTE_NAME="${ROUTE_NAME:-ssrRoute}"
-EDGE_RULE="${EDGE_RULE:-ssrEdgeRule}"
+RULE_SET="${RULE_SET:-edgePersonalizationRuleSet}"
+ROUTE_NAME="${ROUTE_NAME:-edgePersonalizationRoute}"
+EDGE_RULE="${EDGE_RULE:-edgePersonalizationRule}"
 
 # When the edge action runs in the request pipeline: ClientRequest | OriginRequest
 INVOCATION_POINT="${INVOCATION_POINT:-ClientRequest}"

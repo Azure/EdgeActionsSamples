@@ -21,7 +21,7 @@
     ./deploy.ps1 -ResourceGroup myResourceGroup
 
 .EXAMPLE
-    ./deploy.ps1 -ResourceGroup myRg -SubscriptionId <sub> -EdgeActionName ssrRouter
+    ./deploy.ps1 -ResourceGroup myRg -SubscriptionId <sub> -EdgeActionName edgePersonalizationRouter
 #>
 [CmdletBinding()]
 param(
@@ -29,19 +29,19 @@ param(
     [string]$SubscriptionId = "",          # optional; uses current context if empty
 
     # Edge action names must match [a-zA-Z0-9]+ (no hyphens). AFD names may use hyphens.
-    [string]$EdgeActionName = "ssrRouter",
+    [string]$EdgeActionName = "edgePersonalizationRouter",
     [string]$Version        = "v1",
     [string]$Location       = "global",
 
     # AFD resources
-    [string]$AfdProfile   = "ssrDemoAfd",
-    [string]$AfdEndpoint  = "ssrdemo",
-    [string]$OriginGroup  = "ssrOriginGroup",
-    [string]$OriginName   = "ssrOrigin",
+    [string]$AfdProfile   = "edgePersonalizationAfd",
+    [string]$AfdEndpoint  = "edgepersonalization",
+    [string]$OriginGroup  = "edgePersonalizationOriginGroup",
+    [string]$OriginName   = "edgePersonalizationOrigin",
     [string]$OriginHost   = "example.com",   # placeholder backend
-    [string]$RuleSet      = "ssrRuleSet",
-    [string]$RouteName    = "ssrRoute",
-    [string]$EdgeRule     = "ssrEdgeRule",
+    [string]$RuleSet      = "edgePersonalizationRuleSet",
+    [string]$RouteName    = "edgePersonalizationRoute",
+    [string]$EdgeRule     = "edgePersonalizationRule",
 
     # When the edge action runs: ClientRequest | OriginRequest
     [ValidateSet("ClientRequest", "OriginRequest")]

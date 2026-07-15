@@ -3,10 +3,9 @@
 /**
  * Edge personalization router
  *
- * A common "SSR-adjacent" pattern that stays within the publicly supported
- * Edge Actions capabilities (URL redirect + header manipulation): instead of
- * rendering HTML at the edge, the edge inspects each visitor's geo, device and
- * language and routes them to the right pre-rendered / localized variant.
+ * A supported Edge Actions pattern that uses URL and header manipulation. The
+ * edge inspects each visitor's geo, device and language, then signals the
+ * right localized variant.
  *
  * On the landing page ("/" or "/index.html") it:
  *   1. Detects country (context.country_code), device (context.is_mobile) and
