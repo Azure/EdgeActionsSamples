@@ -16,7 +16,7 @@ We will be adding more use cases by public preview and General Availability stag
 
 Edge actions can be setup and consumed using Azure portal.
 
-This repo hosts sample code for Edge Actions. It also hosts devcontainer samples.
+This repo hosts sample code for Edge Actions at https://github.com/Azure/EdgeActionsSamples/tree/main/src/edgeactions-js
 
 ## Contributing
 
