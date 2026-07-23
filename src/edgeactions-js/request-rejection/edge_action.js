@@ -9,6 +9,9 @@ function handler(event) {
     var request = event.request;
     var context = event.context || {};
 
+    // Manually set response code to 200, as part of adding debugging headers
+    response.response_code = 200;
+
     // Extract country code from context
     const country = context.country_code || 'default';
 
