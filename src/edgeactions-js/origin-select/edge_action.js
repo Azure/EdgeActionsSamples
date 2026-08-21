@@ -10,6 +10,9 @@ function handler(event) {
     const context = event.context || {};
     const country = context.country_code || 'default';
 
+    // Manually set response code to 200, as part of adding debugging headers
+    response.response_code = 200;
+
     console.log(`Incoming request from country: ${country}`);
 
     // Check if origin_data is available
