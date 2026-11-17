@@ -77,6 +77,7 @@ The `hook_point` field indicates when in the request lifecycle your action is in
 | Value | Name | Description |
 |-------|------|-------------|
 | `0` | Client Request | After receiving the request from the client, before origin selection. |
+| `1` | Client Response | After receiving the response from the origin, the cache, or internal Azure Front Door functionality, before sending it back to client. |
 
 ## Context
 
