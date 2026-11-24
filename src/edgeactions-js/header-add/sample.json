@@ -1,0 +1,6 @@
+{
+  "$schema": "../sample.schema.json",
+  "title": "Add a response header",
+  "description": "Sets the response status to 200 and adds a custom response header.",
+  "tags": ["response-headers"]
+}

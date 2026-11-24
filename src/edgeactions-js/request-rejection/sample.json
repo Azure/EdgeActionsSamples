@@ -1,0 +1,6 @@
+{
+  "$schema": "../sample.schema.json",
+  "title": "Block requests by country",
+  "description": "Rejects requests from the United Kingdom with a 403 response.",
+  "tags": ["geolocation", "access-control"]
+}

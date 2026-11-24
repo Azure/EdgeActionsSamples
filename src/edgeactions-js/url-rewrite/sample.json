@@ -1,0 +1,6 @@
+{
+  "$schema": "../sample.schema.json",
+  "title": "Rewrite URLs",
+  "description": "Rewrites legacy paths, removes trailing slashes, and strips tracking query parameters.",
+  "tags": ["url-rewrite", "query-string"]
+}

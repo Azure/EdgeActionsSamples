@@ -18,6 +18,22 @@ Edge actions can be setup and consumed using Azure portal.
 
 This repo hosts sample code for Edge Actions at https://github.com/Azure/EdgeActionsSamples/tree/main/src/edgeactions-js
 
+## Adding a sample
+
+1. Create `src/edgeactions-js/<sample-id>/` with `edge_action.js` and a `test_input.json` (or `test_cases.json`).
+2. Add a `sample.json`:
+   ```json
+   {
+     "$schema": "../sample.schema.json",
+     "title": "Add a response header",
+     "description": "Sets the response status to 200 and adds a custom response header.",
+     "category": "headers",
+     "tags": ["response-headers"]
+   }
+   ```
+   `category` is the gallery filter and must be one of the values in `src/edgeactions-js/sample.schema.json`. Omit it if none fits. `tags` are optional search keywords. Reuse existing tags where possible.
+3. Run `node scripts/build-samples-index.mjs` to validate, then open a PR.
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

@@ -1,0 +1,6 @@
+{
+  "$schema": "../sample.schema.json",
+  "title": "Select an origin by country",
+  "description": "Routes US requests to a US origin and falls back to the first available origin.",
+  "tags": ["geolocation", "origin-selection"]
+}
