@@ -1,0 +1,30 @@
+name: Release samples index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/edgeactions-js/**"
+      - "scripts/build-samples-index.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-samples
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: node scripts/build-samples-index.mjs samples-index.json
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "samples-${GITHUB_SHA::7}" samples-index.json --target "$GITHUB_SHA" --notes "Samples index built from $GITHUB_SHA."

@@ -1,0 +1,6 @@
+{
+  "$schema": "../sample.schema.json",
+  "title": "A/B experimentation",
+  "description": "Routes opted-in mobile requests to an experimental origin.",
+  "tags": ["a-b-testing", "origin-selection"]
+}

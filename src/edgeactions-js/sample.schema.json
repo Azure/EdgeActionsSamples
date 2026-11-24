@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Edge Actions sample metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "description"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short title shown in the samples gallery."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One sentence describing what the sample does."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["headers", "routing", "security"],
+      "description": "Gallery filter. Omit if no category fits. To add one, extend this list."
+    },
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Optional search keywords. Reuse existing tags where possible."
+    }
+  }
+}
